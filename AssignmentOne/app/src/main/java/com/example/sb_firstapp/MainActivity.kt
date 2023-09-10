@@ -100,8 +100,8 @@ fun TextInputField(
 ) {
     OutlinedTextField(
         label = { Text(text = label) },
-        value = fieldValue,
         onValueChange = onFieldValChange,
+        value = fieldValue,
         singleLine = true,
         keyboardOptions = KeyboardOptions.Default,
     )
