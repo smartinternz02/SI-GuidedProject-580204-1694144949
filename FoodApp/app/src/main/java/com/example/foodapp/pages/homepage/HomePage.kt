@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExitToApp
@@ -22,10 +23,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.foodapp.pages.homepage.widgets.ItemCircle
+import com.example.foodapp.pages.homepage.widgets.RestaurantCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -67,26 +68,38 @@ fun HomePage(
             color = MaterialTheme.colorScheme.background
         ) {
             Column(modifier = Modifier.padding(vertical = 10.dp)) {
-                LazyRow{
-                    items(count = 6) {index ->
+                LazyRow {
+                    items(count = 6) { index ->
                         Spacer(modifier = Modifier.width(14.dp))
                         ItemCircle(index)
                     }
                 }
                 Spacer(modifier = Modifier.height(25.dp))
-                Box(modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 10.dp)
-                ){
-
+                Text(
+                    modifier = Modifier.padding(start = 10.dp),
+                    text = "Restaurant",
+                    style = MaterialTheme.typography.titleLarge
+                )
+                Spacer(modifier = Modifier.height(25.dp))
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = 12.dp)
+                ) {
+                    LazyColumn {
+                        items(count = 4) {ele ->
+                            RestaurantCard(ele,navController)
+                                Spacer(modifier = Modifier.height(15.dp))
+                        }
+                    }
                 }
             }
         }
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewMainPage() {
-//    MainPage()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun PreviewMainPage() {
+//    HomePage()
+//}

@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.foodapp.pages.deails.DetailScreen
 import com.example.foodapp.pages.homepage.HomePage
 import com.example.foodapp.pages.login.Login
 
@@ -16,6 +17,9 @@ fun Navigation() {
         }
         composable(route = Screen.HomeScreen.route){
             HomePage(navController)
+        }
+        composable(route = Screen.DetailScreen.route){
+            DetailScreen(navController)
         }
     }
 
